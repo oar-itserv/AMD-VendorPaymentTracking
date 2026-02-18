@@ -24,23 +24,34 @@ st.set_page_config(page_title="Vendor Tracking", layout="wide")
 # ==========================================
 st.markdown("""
     <style>
-        /* ซ่อน Hamburger Menu (3 ขีดมุมขวาบน) */
-        #MainMenu {visibility: hidden;}
+        /* 1. ซ่อน Header, Hamburger Menu, Toolbar */
+        header[data-testid="stHeader"] {visibility: hidden; display: none !important;}
+        .st-emotion-cache-18ni7ap {display: none !important;} /* ซ่อน Toolbar ในบางเวอร์ชัน */
+        [data-testid="stToolbar"] {visibility: hidden; display: none !important;}
+        #MainMenu {visibility: hidden; display: none !important;}
         
-        /* ซ่อน Footer (Made with Streamlit) ด้านล่างสุด */
-        footer {visibility: hidden;}
+        /* 2. ซ่อน Footer และแถบลิงก์ด้านล่าง */
+        footer {visibility: hidden; display: none !important;}
+        [data-testid="stFooter"] {visibility: hidden; display: none !important;}
+        .stFooter {display: none !important;}
         
-        /* ซ่อน Header ด้านบน (แถบสีรุ้ง) */
-        header {visibility: hidden;}
+        /* 3. ซ่อนปุ่ม Deploy / Manage App / Hosted with Streamlit */
+        .stAppDeployButton {display:none !important;}
+        [data-testid="stAppDeployButton"] {display:none !important;}
+        a[href^="https://streamlit.io/cloud"] {display: none !important;} /* ซ่อนลิงก์ Streamlit Cloud */
         
-        /* ซ่อนปุ่ม Deploy และเครื่องมือ Developer */
-        .stDeployButton {display:none;}
+        /* 4. ซ่อน Decoration และ Status Widget */
+        [data-testid="stDecoration"] {display:none !important;}
+        [data-testid="stStatusWidget"] {visibility: hidden; display: none !important;}
         
-        /* ซ่อน Decoration (ขีดสีๆ ด้านบน) */
-        [data-testid="stDecoration"] {display:none;}
+        /* 5. ปรับ Layout ให้ชิดขอบ */
+        .block-container {
+            padding-top: 1rem !important; 
+            padding-bottom: 0rem !important;
+        }
         
-        /* ซ่อน Status Widget (รูปคนวิ่ง เวลาโหลดข้อมูล) */
-        [data-testid="stStatusWidget"] {visibility: hidden;}
+        /* 6. ซ่อน Element อื่นๆ ที่อาจจะลอยอยู่ (เผื่อไว้) */
+        div[class*="viewerBadge"] {display: none !important;}
     </style>
 """, unsafe_allow_html=True)
 
