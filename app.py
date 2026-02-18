@@ -202,7 +202,7 @@ if df is not None and df_show_column is not None:
                 filtered_df = filtered_df[date_mask]    
  
     search_query = st.text_input(
-        "ค้นหา: ชื่อคู่ค้า / เลขที่เอกสาร / รายการ",
+        "ค้นหา: เลขประจำตัวผู้เสียภาษี",
         placeholder="พิมพ์คำค้นหาที่นี่..."
     )
 
