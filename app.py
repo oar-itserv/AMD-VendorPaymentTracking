@@ -16,6 +16,38 @@ REQUIRED_ENV_VARS = [
     "SHAREPOINT_SITE_NAME",
 ]
 
+# --- ส่วนของการแสดงผล Streamlit (ตั้งค่าหน้าเว็บต้องอยู่บรรทัดแรกสุดของส่วน UI) ---
+st.set_page_config(page_title="Vendor Tracking", layout="wide")
+
+# ==========================================
+# 🎨 ส่วน CSS สำหรับซ่อนเมนูและ Footer (Clean Mode)
+# ==========================================
+st.markdown("""
+    <style>
+        /* ซ่อน Hamburger Menu (3 ขีดมุมขวาบน) */
+        #MainMenu {visibility: hidden;}
+        
+        /* ซ่อน Footer (Made with Streamlit) ด้านล่างสุด */
+        footer {visibility: hidden;}
+        
+        /* ซ่อน Header ด้านบน (แถบสีรุ้ง) */
+        header {visibility: hidden;}
+        
+        /* ซ่อนปุ่ม Deploy และเครื่องมือ Developer */
+        .stDeployButton {display:none;}
+        
+        /* ซ่อน Decoration (ขีดสีๆ ด้านบน) */
+        [data-testid="stDecoration"] {display:none;}
+        
+        /* ซ่อน Status Widget (รูปคนวิ่ง เวลาโหลดข้อมูล) */
+        [data-testid="stStatusWidget"] {visibility: hidden;}
+    </style>
+""", unsafe_allow_html=True)
+
+# ==========================================
+# ⚙️ ส่วน Backend Functions
+# ==========================================
+
 # 2. ฟังก์ชันขอ Token เพื่อเข้าถึง Microsoft Graph
 def validate_env():
     missing = [name for name in REQUIRED_ENV_VARS if not os.getenv(name)]
@@ -147,7 +179,7 @@ def format_datetime_columns(df):
 
 
 # --- ส่วนของการแสดงผล Streamlit ---
-st.set_page_config(page_title="Vendor Tracking", layout="wide")
+#st.set_page_config(page_title="Vendor Tracking", layout="wide")
 st.title("🔍 ระบบติดตามสถานะการชำระเงิน")
 
 # ปุ่มโหลดข้อมูลใหม่ (ล้าง cache)
