@@ -1,0 +1,5 @@
+[client]
+toolbarMode = "viewer" # ซ่อน Toolbar สำหรับคนทั่วไป (Developer ยังเห็นอยู่)
+
+[ui]
+hideTopBar = false # ถ้า True จะซ่อนแถบสีรุ้งด้านบนสุด (Optional)
